@@ -2,14 +2,13 @@ version: "3.8"
 
 services:
   puter:
-    container_name: puter
     image: ghcr.io/heyputer/puter:latest
     restart: unless-stopped
     ports:
-      - '10000:4100'  # Render không cho expose cổng nội bộ như 4100, nên mình chỉnh lại cổng host = 10000 (Render yêu cầu cổng cố định hoặc PORT env)
+      - '10000:4100'
     environment:
-      NODE_ENV: production
-      HOST: 0.0.0.0
+      - NODE_ENV=production
+      - HOST=0.0.0.0
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:4100/test || exit 1
       interval: 30s
