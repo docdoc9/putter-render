@@ -1,15 +1,17 @@
+version: "1"
+
 services:
   - type: web
     name: puter
-    env: docker
-    plan: free
-    autoDeploy: true
+    runtime: image
     image:
       url: ghcr.io/heyputer/puter:latest
+    plan: free
     envVars:
       - key: NODE_ENV
         value: production
       - key: HOST
         value: 0.0.0.0
       - key: PORT
-        value: 10000
+        value: "10000"
+    region: oregon
