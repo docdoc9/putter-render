@@ -2,11 +2,14 @@ services:
   - type: web
     name: puter
     env: docker
-    dockerComposePath: ./docker-compose.yml
     plan: free
     autoDeploy: true
+    image:
+      url: ghcr.io/heyputer/puter:latest
     envVars:
       - key: NODE_ENV
         value: production
+      - key: HOST
+        value: 0.0.0.0
       - key: PORT
         value: 10000
